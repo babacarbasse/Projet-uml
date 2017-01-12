@@ -1,0 +1,41 @@
+{% extends "::base.html.twig" %}
+{% block titlePage %}
+    Listes
+{% endblock %}
+{% block contentPage %}
+   <div ng-controller="listesCtrl as showCase">
+    <div class="table-responsive card">
+        <table datatable="" dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" class="table table-striped b-t b-b">
+            <thead>
+            <tr>
+                <th  style="width:10%">Numéro Étudiant</th>
+                <th  style="width:10%">Nom</th>
+                <th  style="width:15%">Prénom(s)</th>
+                <th  style="width:10%">Date de naissance</th>
+                <th  style="width:10%">Lieu de naissance</th>
+                <th  style="width:10%">Pays de naissance</th>
+                <th  style="width:10%">Nationalité</th>
+                <th  style="width:15%">Formation</th>
+                <th  style="width:10%">Statut de formation</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for etudiant in listeEtudiant %}
+                <tr>
+                    <td style="vertical-align:middle;">{{ etudiant.num }}</td>
+                    <td style="vertical-align:middle;">{{ etudiant.nom }}</td>
+                    <td style="vertical-align:middle;">{{ etudiant.prenom }}</td>
+                    <td style="vertical-align:middle;">{{ etudiant.getDdnToStr() }}</td>
+                    <td style="vertical-align:middle;">{{ etudiant.lieunaiss }}</td>
+                    <td style="text-align:center;vertical-align:middle;">{{ etudiant.paysNaiss | country('fr') }}</td>
+                    <td style="vertical-align:middle;">{{ etudiant.nationalite }}</td>
+                    <td style="vertical-align:middle;">{{ etudiant.formation }}</td>
+                    <td style="text-align:center;vertical-align:middle;">{{ etudiant.statut }}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+{% endblock %}

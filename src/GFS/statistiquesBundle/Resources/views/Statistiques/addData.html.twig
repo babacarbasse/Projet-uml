@@ -1,0 +1,97 @@
+{% extends "::base.html.twig" %}
+{% block titlePage %}
+    Ajout de données statistiques          
+{% endblock %}
+{% block contentPage %}
+  {% for message in app.session.flashbag.get('notice') %}
+    <div class="alert alert-success"><div class="col-sm-1"><span class="glyphicon glyphicon-ok form-control-feedback"></span></div> <b>{{ message }}</b></div>
+  {% endfor %}
+  <div class="col-lg-8 col-lg-offset-2" ng-controller="statistiquesCtrl">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-plus"></i> Ajouter Etudiant</h3>
+        </div>
+        <div class="panel-body">
+            {{ form_start(etudiantForm, {'action': path('gfs_statistiques_addData'), 'method': 'post'}) }}
+                {{ form_label(etudiantForm.departement) }}
+                {{ form_widget(etudiantForm.departement, {
+                    'attr' : {
+                        'ng-model' : 'idDepartement',
+                        'ng-blur' : 'getOptionsDepartement()',
+                    }
+                    }) 
+                }}
+                <br>
+                {{ form_label(etudiantForm.option) }}
+                {{ form_widget(etudiantForm.option, {
+                    'attr' : {
+                        'ng-model' : 'idOption',
+                        'ng-blur' : 'getFormationsOption()'
+                    },
+                    }) 
+                }}
+                <br>
+                {{ form_label(etudiantForm.formation) }}
+                {{ form_widget(etudiantForm.formation, {
+                    'attr' : {
+                        'ng-model' : 'formation',
+                    },
+                    }) 
+                }}
+                <br>
+                {{ form_label(etudiantForm.niveau) }}
+                {{ form_widget(etudiantForm.niveau) }}
+                <br>
+                {{ form_label(etudiantForm.anneeAcademique) }}
+                {{ form_widget(etudiantForm.anneeAcademique) }}
+                <br>
+                {{ form_label(etudiantForm.dateInscrit) }}
+                {{ form_widget(etudiantForm.dateInscrit) }}
+                <br>
+                {{ form_label(etudiantForm.resultat) }}
+                {{ form_widget(etudiantForm.resultat) }}
+                <br>
+                {{ form_label(etudiantForm.statut) }}
+                {{ form_widget(etudiantForm.statut) }}
+                <br>
+                {{ form_label(etudiantForm.nature) }}
+                {{ form_widget(etudiantForm.nature) }}
+                <br>
+                {{ form_label(etudiantForm.num) }}
+                {{ form_widget(etudiantForm.num) }}
+                <hr>
+                {{ form_label(etudiantForm.prenom) }}
+                {{ form_widget(etudiantForm.prenom) }}
+                <br>
+                {{ form_label(etudiantForm.nom) }}
+                {{ form_widget(etudiantForm.nom) }}
+                <br>
+                {{ form_label(etudiantForm.Sexe) }}
+                {{ form_widget(etudiantForm.Sexe) }}
+                <br>
+                {{ form_label(etudiantForm.ddn) }}
+                {{ form_widget(etudiantForm.ddn) }}
+                <br>
+                {{ form_label(etudiantForm.lieunaiss) }}
+                {{ form_widget(etudiantForm.lieunaiss) }}
+                <br>
+                {{ form_label(etudiantForm.paysNaiss) }}
+                {{ form_widget(etudiantForm.paysNaiss) }}
+                <br>
+                {{ form_label(etudiantForm.nationalite) }}
+                {{ form_widget(etudiantForm.nationalite) }}
+                <br>
+                {{ form_label(etudiantForm.cin) }}
+                {{ form_widget(etudiantForm.cin) }}
+                <br>
+                {{ form_label(etudiantForm.tel) }}
+                {{ form_widget(etudiantForm.tel) }}
+                <br>
+                {{ form_label(etudiantForm.serieBac) }}
+                {{ form_widget(etudiantForm.serieBac) }}
+                <br>
+            {{ form_end(etudiantForm) }}
+        </div>
+    </div>
+  </div>
+{% endblock %}

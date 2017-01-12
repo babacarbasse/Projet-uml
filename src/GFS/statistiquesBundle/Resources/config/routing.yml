@@ -1,0 +1,35 @@
+gfs_statistiques_listes:
+    path: /listes
+    defaults:
+        _controller: GFSstatistiquesBundle:GestionStat:listes
+
+gfs_statistiques_addData: 
+    path: /addData
+    defaults:
+        _controller: GFSstatistiquesBundle:GestionStat:addData
+        
+gfs_statistiques_getOptionAtSelectedDep:
+    path: /addData/getOptionAtSelectedDept
+    defaults:
+        _controller: GFSstatistiquesBundle:GestionStat:getOptionAtSelectedDept
+        
+gfs_statistiques_getFormationAtSelectOption:
+    path: /addData/getFormationAtOption
+    defaults:
+        _controller: GFSstatistiquesBundle:GestionStat:getFormationAtOption
+        
+gfs_statistiques:
+    path: /globalStatistiques
+    defaults:
+        _controller: GFSstatistiquesBundle:GestionStat:globalStatistique
+        
+
+gfs_statistiques_getDepartementFormations:
+   path: /getAllDepartementFormation
+   defaults: 
+       _controller: GFSstatistiquesBundle:GestionStat:getlAllDepartFormation
+       
+gfs_statistiques_getAllEtudiantForStat:
+    path: /getAllEtudiantForStat
+    defaults:
+        _controller: GFSstatistiquesBundle:GestionStat:allEtudiantForStat

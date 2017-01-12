@@ -1,0 +1,4 @@
+services:
+#    gf_sstatistiques.example:
+#        class: GFS\statistiquesBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

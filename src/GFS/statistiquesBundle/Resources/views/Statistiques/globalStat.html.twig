@@ -1,0 +1,68 @@
+{% extends "::base.html.twig" %}
+{% block titlePage %}
+    Statistiques globales
+{% endblock %}
+{% block contentPage %}
+    <div id="contents" ng-controller="globalStatCtrl">
+        <div class="card">
+            <div class="row">
+                <div class="col-md-3">
+                   <div class="panel-body">
+                       <form class="form-horizontal">
+                           <div class="radio" ng-if="nomDepartement=='Tout'">
+                              <label><input type="radio" checked name="optradio" ng-click="changeStat()" ng-model="choix.motCle" value="all">Tout</label>
+                            </div>
+                           <div class="radio">
+                              <label><input type="radio" name="optradio" ng-click="changeStat()" ng-model="choix.motCle" value="sexe">Par sexe</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio" ng-click="changeStat()" ng-model="choix.motCle" value="niveau">Par niveau</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio" ng-click="changeStat()" ng-model="choix.motCle" value="nationalite">Par nationalité</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio" ng-click="changeStat()" ng-model="choix.motCle" value="resultat">Par taux de réussite</label>
+                            </div>
+                       </form>
+                   </div> 
+                </div>
+                <div class="col-md-9">
+                    <div class="panel-body">
+                      <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                          <label>Départements</label>
+                          <select class="form-control" ng-change="loadFormation()" ng-model="nomDepartement">
+                            <option value='Tout'>Tout</option>
+                            {%for departement in listeDepartement %}
+                            <option value="{{departement.nom}}">
+                                {{departement.nom}}
+                            </option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label>Formation</label>
+                          <select class="form-control">
+                            <option value="Globales">Tout</option>
+                            <option ng-repeat="formation in listeFormations" ng-if="formation.nomDepartement == nomDepartement" value="[[formation.nom]]">
+                                [[formation.nom]]
+                            </option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                              <label>Année académique</label>
+                              <select class="form-control">
+                                <option value='Tout'>Tout</option>
+                              </select>
+                            </div>
+                      </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div google-chart chart="ChartObject" style="height:600px; width:100%;"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
