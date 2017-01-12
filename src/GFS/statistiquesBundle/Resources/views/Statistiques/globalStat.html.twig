@@ -9,20 +9,24 @@
                 <div class="col-md-3">
                    <div class="panel-body">
                        <form class="form-horizontal">
-                           <div class="radio" ng-if="nomDepartement=='Tout'">
-                              <label><input type="radio" checked name="optradio" ng-click="changeStat()" ng-model="choix.motCle" value="all">Tout</label>
+                           <div class="radio">
+                              <label><input type="radio" ng-checked="true" name="optradio" ng-click="changeStat()" ng-model="choix.motCle" value="all">Mixte</label>
                             </div>
                            <div class="radio">
                               <label><input type="radio" name="optradio" ng-click="changeStat()" ng-model="choix.motCle" value="sexe">Par sexe</label>
                             </div>
+                            <hr>
                             <div class="radio">
-                              <label><input type="radio" name="optradio" ng-click="changeStat()" ng-model="choix.motCle" value="niveau">Par niveau</label>
+                              <label><input type="radio" name="optradio1" ng-checked="true" ng-click="changeCritereStat()" ng-model="choix.critere" value="all">Par effectif total</label>
                             </div>
                             <div class="radio">
-                              <label><input type="radio" name="optradio" ng-click="changeStat()" ng-model="choix.motCle" value="nationalite">Par nationalité</label>
+                              <label><input type="radio" name="optradio1" ng-click="changeCritereStat()" ng-model="choix.critere" value="niveau">Par niveau</label>
                             </div>
                             <div class="radio">
-                              <label><input type="radio" name="optradio" ng-click="changeStat()" ng-model="choix.motCle" value="resultat">Par taux de réussite</label>
+                              <label><input type="radio" name="optradio1" ng-click="changeCritereStat()" ng-model="choix.critere" value="nationalite">Par nationalité</label>
+                            </div>
+                            <div class="radio">
+                              <label><input type="radio" name="optradio1" ng-click="changeCritereStat()" ng-model="choix.critere" value="resultat">Par taux de réussite</label>
                             </div>
                        </form>
                    </div> 
@@ -61,7 +65,37 @@
                 </div>
             </div>
             <div class="row">
-                <div google-chart chart="ChartObject" style="height:600px; width:100%;"></div>
+                <div class="col-lg-6">
+                    <div google-chart chart="ChartObjectPub" style="height:600px; width:100%;"></div>
+                </div>
+                <div class="col-lg-6">
+                    <div google-chart chart="ChartObjectPrive" style="height:600px; width:100%;"></div>
+                </div>
+            </div>
+        </div>
+         <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Les effectifs de chaque département de l'ESP</h3>
+            </div>
+            <div class="card">
+                <table class= "table table-hover">
+                    <thead>
+                    <tr>
+                        <th  style="width:10%">Nom Département</th>
+                        <th  style="width:10%">Effectif Privé</th>
+                        <th  style="width:10%">Effectif Public</th>
+                        <th  style="width:10%">Effectif Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat = "departement in listeAll">
+                            <td style="vertical-align:middle;">[[departement.nomDepartement]]</td>
+                            <td style="vertical-align:middle;">[[departement.effectifPrive]]</td>
+                            <td style="vertical-align:middle;">[[departement.effectifPub]]</td>
+                            <td style="vertical-align:middle;">[[departement.effectifTotal]]</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

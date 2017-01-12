@@ -3,9 +3,8 @@
     Listes
 {% endblock %}
 {% block contentPage %}
-   <div ng-controller="listesCtrl as showCase">
     <div class="table-responsive card">
-        <table datatable="" dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns" class="table table-striped b-t b-b">
+        <table class="table table-hover">
             <thead>
             <tr>
                 <th  style="width:10%">Numéro Étudiant</th>
@@ -36,6 +35,5 @@
             {% endfor %}
             </tbody>
         </table>
-    </div>
     </div>
 {% endblock %}

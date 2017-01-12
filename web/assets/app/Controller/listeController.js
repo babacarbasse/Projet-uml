@@ -1,6 +1,6 @@
 app.controller('listesCtrl',['$scope', '$http',
-    function($scope, $http, DTOptionsBuilder, DTColumnBuilder) {
-    /*    var vm = this;
+   /* function($scope, $http, DTOptionsBuilder, DTColumnBuilder) {
+        var vm = this;
     vm.dtOptions = DTOptionsBuilder.fromSource('data.json')
         .withDOM('frtip')
         .withPaginationType('full_numbers')
